@@ -1,12 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { createFileRoute as _unused } from "@tanstack/react-router";
 import { Section, SectionHeading } from "@/components/section";
 import { PageHero } from "@/components/page-hero";
 import { articleCategories, articles } from "@/lib/comex-data";
 import { cn } from "@/lib/utils";
-
-void _unused;
 
 const title = "Centro de Inteligencia Comex | Tu Asesor de Comex";
 const description =
