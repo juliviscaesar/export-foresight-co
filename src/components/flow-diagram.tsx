@@ -41,6 +41,7 @@ const nodes = [
 
 export function FlowDiagram({ variant = "light" }: { variant?: "light" | "dark" }) {
   const [active, setActive] = useState(0);
+  const current = nodes[active]!;
   const dark = variant === "dark";
 
   return (
@@ -101,9 +102,9 @@ export function FlowDiagram({ variant = "light" }: { variant?: "light" | "dark" 
         )}
       >
         <span className={cn("font-mono text-xs", dark ? "text-signal" : "text-foreground")}>
-          {nodes[active].label.toUpperCase()} ·{" "}
+          {current.label.toUpperCase()} ·{" "}
         </span>
-        {nodes[active].detail}
+        {current.detail}
       </p>
     </div>
   );

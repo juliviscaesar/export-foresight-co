@@ -5,7 +5,7 @@ import { needs } from "@/lib/comex-data";
 import { cn } from "@/lib/utils";
 
 export function NeedSelector() {
-  const [selected, setSelected] = useState(needs[0].id);
+  const [selected, setSelected] = useState(needs[0]!.id);
   const need = needs.find((n) => n.id === selected)!;
 
   return (

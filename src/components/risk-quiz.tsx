@@ -98,7 +98,7 @@ export function RiskQuiz() {
 
   const total = Object.values(answers).reduce((a, b) => a + b, 0);
   const complete = Object.keys(answers).length === questions.length;
-  const level = total <= 4 ? levels[0] : total <= 11 ? levels[1] : levels[2];
+  const level = (total <= 4 ? levels[0] : total <= 11 ? levels[1] : levels[2])!;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1.5fr_1fr]">

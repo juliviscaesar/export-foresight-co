@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function ImportMap() {
   const [active, setActive] = useState(0);
-  const stage = importStages[active];
+  const stage = importStages[active]!;
   const progress = ((active + 1) / importStages.length) * 100;
 
   return (
