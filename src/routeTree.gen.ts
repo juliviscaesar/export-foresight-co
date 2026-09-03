@@ -13,10 +13,13 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlcanceRouteImport } from './routes/alcance'
 import { Route as CalculadoraRouteImport } from './routes/calculadora'
 import { Route as CentroInteligenciaRouteImport } from './routes/centro-inteligencia'
+import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
 import { Route as EntidadesRouteImport } from './routes/entidades'
 import { Route as MapaImportacionRouteImport } from './routes/mapa-importacion'
 import { Route as ServiciosRouteImport } from './routes/servicios'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -36,6 +39,11 @@ const CalculadoraRoute = CalculadoraRouteImport.update({
 const CentroInteligenciaRoute = CentroInteligenciaRouteImport.update({
   id: '/centro-inteligencia',
   path: '/centro-inteligencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DiagnosticoRoute = DiagnosticoRouteImport.update({
@@ -58,26 +66,42 @@ const ServiciosRoute = ServiciosRouteImport.update({
   path: '/servicios',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alcance': typeof AlcanceRoute
   '/calculadora': typeof CalculadoraRoute
   '/centro-inteligencia': typeof CentroInteligenciaRoute
+  '/contacto': typeof ContactoRoute
   '/diagnostico': typeof DiagnosticoRoute
   '/entidades': typeof EntidadesRoute
   '/mapa-importacion': typeof MapaImportacionRoute
   '/servicios': typeof ServiciosRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alcance': typeof AlcanceRoute
   '/calculadora': typeof CalculadoraRoute
   '/centro-inteligencia': typeof CentroInteligenciaRoute
+  '/contacto': typeof ContactoRoute
   '/diagnostico': typeof DiagnosticoRoute
   '/entidades': typeof EntidadesRoute
   '/mapa-importacion': typeof MapaImportacionRoute
   '/servicios': typeof ServiciosRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -85,10 +109,13 @@ export interface FileRoutesById {
   '/alcance': typeof AlcanceRoute
   '/calculadora': typeof CalculadoraRoute
   '/centro-inteligencia': typeof CentroInteligenciaRoute
+  '/contacto': typeof ContactoRoute
   '/diagnostico': typeof DiagnosticoRoute
   '/entidades': typeof EntidadesRoute
   '/mapa-importacion': typeof MapaImportacionRoute
   '/servicios': typeof ServiciosRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -97,30 +124,39 @@ export interface FileRouteTypes {
     | '/alcance'
     | '/calculadora'
     | '/centro-inteligencia'
+    | '/contacto'
     | '/diagnostico'
     | '/entidades'
     | '/mapa-importacion'
     | '/servicios'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/alcance'
     | '/calculadora'
     | '/centro-inteligencia'
+    | '/contacto'
     | '/diagnostico'
     | '/entidades'
     | '/mapa-importacion'
     | '/servicios'
+    | '/blog/$slug'
+    | '/blog'
   id:
     | '__root__'
     | '/'
     | '/alcance'
     | '/calculadora'
     | '/centro-inteligencia'
+    | '/contacto'
     | '/diagnostico'
     | '/entidades'
     | '/mapa-importacion'
     | '/servicios'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -128,10 +164,13 @@ export interface RootRouteChildren {
   AlcanceRoute: typeof AlcanceRoute
   CalculadoraRoute: typeof CalculadoraRoute
   CentroInteligenciaRoute: typeof CentroInteligenciaRoute
+  ContactoRoute: typeof ContactoRoute
   DiagnosticoRoute: typeof DiagnosticoRoute
   EntidadesRoute: typeof EntidadesRoute
   MapaImportacionRoute: typeof MapaImportacionRoute
   ServiciosRoute: typeof ServiciosRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -164,6 +203,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CentroInteligenciaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/diagnostico': {
       id: '/diagnostico'
       path: '/diagnostico'
@@ -192,6 +238,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiciosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -200,10 +260,13 @@ const rootRouteChildren: RootRouteChildren = {
   AlcanceRoute: AlcanceRoute,
   CalculadoraRoute: CalculadoraRoute,
   CentroInteligenciaRoute: CentroInteligenciaRoute,
+  ContactoRoute: ContactoRoute,
   DiagnosticoRoute: DiagnosticoRoute,
   EntidadesRoute: EntidadesRoute,
   MapaImportacionRoute: MapaImportacionRoute,
   ServiciosRoute: ServiciosRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
