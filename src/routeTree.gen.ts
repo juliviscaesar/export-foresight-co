@@ -10,14 +10,22 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlcanceRouteImport } from './routes/alcance'
 import { Route as CalculadoraRouteImport } from './routes/calculadora'
 import { Route as CentroInteligenciaRouteImport } from './routes/centro-inteligencia'
+import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
 import { Route as EntidadesRouteImport } from './routes/entidades'
 import { Route as MapaImportacionRouteImport } from './routes/mapa-importacion'
+import { Route as ServiciosRouteImport } from './routes/servicios'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlcanceRoute = AlcanceRouteImport.update({
+  id: '/alcance',
+  path: '/alcance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalculadoraRoute = CalculadoraRouteImport.update({
@@ -30,6 +38,11 @@ const CentroInteligenciaRoute = CentroInteligenciaRouteImport.update({
   path: '/centro-inteligencia',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DiagnosticoRoute = DiagnosticoRouteImport.update({
+  id: '/diagnostico',
+  path: '/diagnostico',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EntidadesRoute = EntidadesRouteImport.update({
   id: '/entidades',
   path: '/entidades',
@@ -40,59 +53,85 @@ const MapaImportacionRoute = MapaImportacionRouteImport.update({
   path: '/mapa-importacion',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiciosRoute = ServiciosRouteImport.update({
+  id: '/servicios',
+  path: '/servicios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alcance': typeof AlcanceRoute
   '/calculadora': typeof CalculadoraRoute
   '/centro-inteligencia': typeof CentroInteligenciaRoute
+  '/diagnostico': typeof DiagnosticoRoute
   '/entidades': typeof EntidadesRoute
   '/mapa-importacion': typeof MapaImportacionRoute
+  '/servicios': typeof ServiciosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alcance': typeof AlcanceRoute
   '/calculadora': typeof CalculadoraRoute
   '/centro-inteligencia': typeof CentroInteligenciaRoute
+  '/diagnostico': typeof DiagnosticoRoute
   '/entidades': typeof EntidadesRoute
   '/mapa-importacion': typeof MapaImportacionRoute
+  '/servicios': typeof ServiciosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alcance': typeof AlcanceRoute
   '/calculadora': typeof CalculadoraRoute
   '/centro-inteligencia': typeof CentroInteligenciaRoute
+  '/diagnostico': typeof DiagnosticoRoute
   '/entidades': typeof EntidadesRoute
   '/mapa-importacion': typeof MapaImportacionRoute
+  '/servicios': typeof ServiciosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/alcance'
     | '/calculadora'
     | '/centro-inteligencia'
+    | '/diagnostico'
     | '/entidades'
     | '/mapa-importacion'
+    | '/servicios'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/alcance'
     | '/calculadora'
     | '/centro-inteligencia'
+    | '/diagnostico'
     | '/entidades'
     | '/mapa-importacion'
+    | '/servicios'
   id:
     | '__root__'
     | '/'
+    | '/alcance'
     | '/calculadora'
     | '/centro-inteligencia'
+    | '/diagnostico'
     | '/entidades'
     | '/mapa-importacion'
+    | '/servicios'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlcanceRoute: typeof AlcanceRoute
   CalculadoraRoute: typeof CalculadoraRoute
   CentroInteligenciaRoute: typeof CentroInteligenciaRoute
+  DiagnosticoRoute: typeof DiagnosticoRoute
   EntidadesRoute: typeof EntidadesRoute
   MapaImportacionRoute: typeof MapaImportacionRoute
+  ServiciosRoute: typeof ServiciosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -102,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alcance': {
+      id: '/alcance'
+      path: '/alcance'
+      fullPath: '/alcance'
+      preLoaderRoute: typeof AlcanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calculadora': {
@@ -118,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CentroInteligenciaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/diagnostico': {
+      id: '/diagnostico'
+      path: '/diagnostico'
+      fullPath: '/diagnostico'
+      preLoaderRoute: typeof DiagnosticoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/entidades': {
       id: '/entidades'
       path: '/entidades'
@@ -132,15 +185,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MapaImportacionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servicios': {
+      id: '/servicios'
+      path: '/servicios'
+      fullPath: '/servicios'
+      preLoaderRoute: typeof ServiciosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlcanceRoute: AlcanceRoute,
   CalculadoraRoute: CalculadoraRoute,
   CentroInteligenciaRoute: CentroInteligenciaRoute,
+  DiagnosticoRoute: DiagnosticoRoute,
   EntidadesRoute: EntidadesRoute,
   MapaImportacionRoute: MapaImportacionRoute,
+  ServiciosRoute: ServiciosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
