@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CircleHelp, X } from "lucide-react";
+import { ArrowDownRight, X } from "lucide-react";
 import { entities } from "@/lib/comex-data";
 import { cn } from "@/lib/utils";
 
@@ -9,15 +9,15 @@ export function EntityCards() {
 
   return (
     <div>
-      <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+      <div className="flex flex-wrap gap-3">
         {entities.map((entity) => (
           <button
             key={entity.code}
             type="button"
             onClick={() => setOpen(entity.code === open ? null : entity.code)}
             className={cn(
-              "group flex flex-col items-start gap-3 bg-card p-6 text-left transition-colors",
-              open === entity.code ? "bg-ink text-ink-foreground" : "hover:bg-secondary",
+              "group rounded-full px-5 py-3 text-left transition-all",
+              open === entity.code ? "bg-sun text-sun-foreground -rotate-2" : "bg-secondary hover:bg-accent hover:-translate-y-1",
             )}
           >
             <span
@@ -28,29 +28,13 @@ export function EntityCards() {
             >
               {entity.code}
             </span>
-            <span
-              className={cn(
-                "text-xs leading-snug",
-                open === entity.code ? "text-ink-foreground/70" : "text-muted-foreground",
-              )}
-            >
-              {entity.role}
-            </span>
-            <span
-              className={cn(
-                "label-mono mt-auto flex items-center gap-1.5 pt-4",
-                open === entity.code ? "text-signal" : "text-muted-foreground",
-              )}
-            >
-              <CircleHelp className="size-3" />
-              ¿Para qué sirve?
-            </span>
+            <ArrowDownRight className="size-4 opacity-45" />
           </button>
         ))}
       </div>
 
       {active && (
-        <div className="mt-px border border-t-0 border-border bg-secondary p-8 duration-300 animate-in fade-in slide-in-from-top-2">
+        <div className="mt-8 rounded-3xl bg-ink p-8 text-ink-foreground duration-300 animate-in fade-in slide-in-from-top-2 md:p-10">
           <div className="flex items-start justify-between gap-6">
             <div>
               <p className="label-mono text-muted-foreground">{active.code}</p>

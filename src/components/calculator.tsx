@@ -102,9 +102,11 @@ export function Calculator() {
   ];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
-      <div className="border border-border bg-card p-8">
-        <p className="label-mono text-muted-foreground">Datos de la operación</p>
+    <div className="overflow-hidden rounded-3xl bg-card editorial-shadow lg:grid lg:grid-cols-[.92fr_1.08fr]">
+      <div className="p-6 md:p-10">
+        <p className="label-mono text-coral">Cuéntame los números</p>
+        <h3 className="mt-3 font-display text-4xl leading-none">El chino te dio precio.<br /><em>¿Y ahora qué?</em></h3>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">Escribe cuánto te cobra y descubre una aproximación del costo real de traerlo a Colombia.</p>
         <div className="mt-6 grid gap-5 sm:grid-cols-2">
           <Field
             label="Valor FOB de la mercancía (USD)"
@@ -144,7 +146,7 @@ export function Calculator() {
           />
         </div>
 
-        <div className="mt-7 flex flex-wrap items-center gap-3 border-t border-border pt-5">
+        <div className="mt-7 flex flex-wrap items-center gap-3 rounded-xl bg-secondary p-4">
           <div className="flex items-center gap-2">
             {loadingTrm ? (
               <RefreshCw className="size-3.5 animate-spin text-muted-foreground" />
@@ -176,8 +178,8 @@ export function Calculator() {
         </div>
       </div>
 
-      <div className="flex flex-col border border-foreground/15 bg-ink p-8 text-ink-foreground">
-        <p className="label-mono text-signal">Desglose orientativo</p>
+      <div className="flex flex-col bg-ink p-6 text-ink-foreground md:p-10">
+        <p className="label-mono text-signal">De precio bonito a costo real</p>
         <dl className="mt-6 divide-y divide-ink-foreground/10">
           {rows.map((row) => (
             <div key={row.label} className="flex items-baseline justify-between gap-6 py-3">
@@ -187,16 +189,16 @@ export function Calculator() {
           ))}
         </dl>
 
-        <div className="mt-6 border-t border-signal/40 pt-6">
-          <div className="flex items-baseline justify-between gap-6">
-            <span className="font-display text-sm font-semibold">Costo total estimado</span>
-            <span className="font-mono text-2xl font-bold tabular-nums text-signal">
+        <div className="mt-8 rounded-2xl bg-signal p-6 text-signal-foreground">
+          <div>
+            <span className="label-mono">Tu costo estimado en Colombia</span>
+            <span className="mt-3 block font-display text-4xl leading-none tabular-nums md:text-6xl">
               {currencyCOP(result.total)}
             </span>
           </div>
-          <div className="mt-3 flex items-baseline justify-between gap-6">
-            <span className="text-sm text-ink-foreground/65">Costo unitario puesto en bodega</span>
-            <span className="font-mono text-sm tabular-nums">{currencyCOP(result.unit)}</span>
+          <div className="mt-5 flex items-baseline justify-between gap-6 border-t border-signal-foreground/20 pt-4">
+            <span className="text-xs">Por unidad, puesto en bodega</span>
+            <span className="font-mono text-sm font-bold tabular-nums">{currencyCOP(result.unit)}</span>
           </div>
         </div>
 
@@ -233,7 +235,7 @@ function Field({
         inputMode="decimal"
         value={value}
         onChange={(e) => onChange(e.target.value.replace(/[^\d.]/g, ""))}
-        className="mt-2 w-full border border-input bg-background px-3 py-2 font-mono text-sm tabular-nums transition-colors focus:border-ring focus:outline-none"
+        className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 font-mono text-sm tabular-nums transition-colors focus:border-ring focus:outline-none"
       />
       <span className="mt-1.5 flex items-start gap-1 text-[11px] leading-snug text-muted-foreground">
         <Info className="mt-0.5 size-3 shrink-0" />

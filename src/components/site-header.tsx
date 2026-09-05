@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const nav = [
   { to: "/centro-inteligencia", label: "Centro de Inteligencia" },
@@ -15,13 +15,11 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 bg-background/88 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="flex items-baseline gap-2">
-          <span className="font-display text-base font-bold tracking-tight">
-            Tu Asesor de Comex
-          </span>
-          <span className="label-mono hidden text-muted-foreground sm:inline">Colombia</span>
+        <Link to="/" className="flex items-center gap-3">
+          <span className="flex size-9 items-center justify-center rounded-full bg-ink font-display text-xl italic text-sun">A</span>
+          <span className="font-sans text-sm font-extrabold leading-none uppercase">Tu Asesor<br />de Comex</span>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
@@ -29,7 +27,7 @@ export function SiteHeader() {
             <Link
               key={item.to}
               to={item.to}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "text-foreground font-medium" }}
             >
               {item.label}
@@ -37,9 +35,9 @@ export function SiteHeader() {
           ))}
           <Link
             to="/contacto"
-            className="rounded-sm bg-ink px-4 py-2 text-sm font-medium text-ink-foreground transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-xs font-bold text-ink-foreground transition-transform hover:-translate-y-0.5"
           >
-            Agenda diagnóstico
+            Hablemos <ArrowUpRight className="size-3.5" />
           </Link>
         </nav>
 
@@ -54,7 +52,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav className="border-t border-border bg-background px-6 py-4 lg:hidden">
+        <nav className="bg-background px-6 py-6 shadow-lg lg:hidden">
           <div className="flex flex-col gap-3">
             {nav.map((item) => (
               <Link
@@ -69,7 +67,7 @@ export function SiteHeader() {
             <Link
               to="/contacto"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-sm bg-ink px-4 py-2 text-center text-sm font-medium text-ink-foreground"
+              className="mt-2 rounded-xl bg-ink px-4 py-3 text-center text-sm font-medium text-ink-foreground"
             >
               Agenda diagnóstico
             </Link>

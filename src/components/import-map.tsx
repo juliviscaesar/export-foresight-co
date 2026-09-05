@@ -9,14 +9,14 @@ export function ImportMap() {
   const progress = ((active + 1) / importStages.length) * 100;
 
   return (
-    <div>
-      <div className="relative">
-        <div className="absolute top-[13px] right-0 left-0 h-px bg-border" />
+    <div className="overflow-hidden rounded-3xl bg-card p-5 editorial-shadow md:p-10">
+      <div className="relative overflow-x-auto pb-4">
+        <div className="absolute top-[18px] right-0 left-0 h-1 rounded-full bg-secondary" />
         <div
-          className="absolute top-[13px] left-0 h-px bg-signal transition-all duration-500"
+          className="absolute top-[18px] left-0 h-1 rounded-full bg-signal transition-all duration-500"
           style={{ width: `${progress}%` }}
         />
-        <div className="relative grid grid-cols-2 gap-y-6 sm:grid-cols-4 lg:grid-cols-7">
+        <div className="relative grid min-w-[760px] grid-cols-7">
           {importStages.map((s, i) => (
             <button
               key={s.id}
@@ -26,7 +26,7 @@ export function ImportMap() {
             >
               <span
                 className={cn(
-                  "flex size-[26px] items-center justify-center rounded-full border font-mono text-[10px] transition-colors",
+                  "flex size-10 items-center justify-center rounded-full border-4 border-card font-mono text-[10px] transition-colors",
                   i <= active
                     ? "border-signal bg-signal text-signal-foreground"
                     : "border-border bg-background text-muted-foreground group-hover:border-foreground",
@@ -47,14 +47,14 @@ export function ImportMap() {
         </div>
       </div>
 
-      <div className="mt-12 grid gap-px border border-border bg-border lg:grid-cols-[1.1fr_2fr]">
-        <div className="bg-ink p-8 text-ink-foreground">
-          <p className="label-mono text-signal">Etapa {stage.index}</p>
-          <h3 className="mt-3 font-display text-2xl font-bold">{stage.title}</h3>
-          <p className="mt-4 text-sm leading-relaxed text-ink-foreground/70">{stage.summary}</p>
+      <div className="mt-10 overflow-hidden rounded-2xl bg-secondary lg:grid lg:grid-cols-[1.05fr_2fr]">
+        <div className="bg-sun p-8 text-sun-foreground">
+          <p className="label-mono">Etapa {stage.index}</p>
+          <h3 className="mt-3 font-display text-4xl leading-none">{stage.title}</h3>
+          <p className="mt-4 text-sm leading-relaxed opacity-75">{stage.summary}</p>
         </div>
 
-        <div className="grid gap-px bg-border md:grid-cols-3">
+        <div className="grid md:grid-cols-3">
           <Panel
             icon={<AlertTriangle className="size-4 text-alert" />}
             title="Riesgos"
@@ -86,7 +86,7 @@ function Panel({
   items: string[];
 }) {
   return (
-    <div className="bg-card p-6">
+    <div className="p-6 md:border-l md:border-border">
       <div className="flex items-center gap-2">
         {icon}
         <p className="label-mono text-muted-foreground">{title}</p>

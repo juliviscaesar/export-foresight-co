@@ -1,18 +1,28 @@
 import { Link } from "@tanstack/react-router";
-import { ShieldAlert } from "lucide-react";
+import { ArrowUpRight, MessageCircle, ShieldAlert } from "lucide-react";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-ink text-ink-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
+    <footer className="bg-ink text-ink-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mb-20 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <p className="font-display text-xl font-bold">Tu Asesor de Comex</p>
+            <p className="label-mono text-signal">La conversación puede empezar aquí</p>
+            <p className="mt-4 max-w-4xl font-display text-5xl leading-[.9] sm:text-7xl">Antes de importar, <em className="text-sun">entiende.</em></p>
+          </div>
+          <a href="https://wa.me/573184509704" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-xl bg-signal px-6 py-4 text-sm font-bold text-signal-foreground">
+            <MessageCircle className="size-5" /> WhatsApp <ArrowUpRight className="size-4" />
+          </a>
+        </div>
+        <div className="grid gap-12 border-t border-ink-foreground/12 pt-12 lg:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <p className="font-display text-3xl">Tu Asesor de Comex</p>
             <p className="mt-3 max-w-sm text-sm text-ink-foreground/70">
               Asesoría estratégica y educación en comercio exterior. Analizamos, explicamos y
               prevenimos riesgos antes de que se ejecute la operación.
             </p>
             <p className="label-mono mt-6 text-signal">Antes de importar, entiende.</p>
+            <a href="tel:+573184509704" className="mt-4 inline-block text-sm font-semibold text-sun">+57 318 450 9704</a>
           </div>
 
           <div>
