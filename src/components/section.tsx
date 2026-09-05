@@ -11,7 +11,7 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={cn("border-t border-border py-24", className)}>
+    <section id={id} className={cn("py-24 md:py-32", className)}>
       <div className="mx-auto max-w-7xl px-6">{children}</div>
     </section>
   );
@@ -31,7 +31,7 @@ export function SectionHeading({
   return (
     <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
       {kicker && <p className="label-mono text-muted-foreground">{kicker}</p>}
-      <h2 className="mt-4 text-3xl font-bold text-balance md:text-4xl">{title}</h2>
+      <h2 className="mt-4 text-4xl leading-[0.98] text-balance md:text-6xl">{title}</h2>
       {description && (
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">{description}</p>
       )}
