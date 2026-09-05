@@ -11,9 +11,9 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
-  --font-display: "Space Grotesk", "Helvetica Neue", sans-serif;
-  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-sans: "Work Sans", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -37,6 +37,11 @@
   --color-ink-foreground: var(--ink-foreground);
   --color-signal: var(--signal);
   --color-signal-foreground: var(--signal-foreground);
+  --color-sun: var(--sun);
+  --color-sun-foreground: var(--sun-foreground);
+  --color-coral: var(--coral);
+  --color-coral-foreground: var(--coral-foreground);
+  --color-paper: var(--paper);
   --color-grid: var(--grid);
   --color-caution: var(--caution);
   --color-alert: var(--alert);
@@ -57,30 +62,35 @@
 }
 
 :root {
-  --radius: 0.25rem;
-  --background: oklch(0.995 0.002 250);
-  --foreground: oklch(0.19 0.03 258);
+  --radius: 0.75rem;
+  --background: oklch(0.985 0.012 90);
+  --foreground: oklch(0.18 0.025 178);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.19 0.03 258);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.19 0.03 258);
-  --primary: oklch(0.24 0.05 259);
+  --primary: oklch(0.31 0.075 174);
   --primary-foreground: oklch(0.98 0.005 250);
-  --secondary: oklch(0.962 0.008 250);
+  --secondary: oklch(0.95 0.018 89);
   --secondary-foreground: oklch(0.24 0.05 259);
-  --muted: oklch(0.966 0.006 250);
-  --muted-foreground: oklch(0.52 0.02 256);
-  --accent: oklch(0.95 0.03 200);
+  --muted: oklch(0.95 0.014 90);
+  --muted-foreground: oklch(0.48 0.025 175);
+  --accent: oklch(0.91 0.065 173);
   --accent-foreground: oklch(0.24 0.05 259);
   --destructive: oklch(0.55 0.2 25);
   --destructive-foreground: oklch(0.98 0.005 250);
-  --border: oklch(0.915 0.008 250);
-  --input: oklch(0.9 0.01 250);
-  --ring: oklch(0.7 0.11 200);
-  --ink: oklch(0.17 0.03 258);
-  --ink-foreground: oklch(0.97 0.005 250);
-  --signal: oklch(0.72 0.14 190);
-  --signal-foreground: oklch(0.17 0.03 258);
+  --border: oklch(0.88 0.022 88);
+  --input: oklch(0.86 0.025 88);
+  --ring: oklch(0.67 0.14 171);
+  --ink: oklch(0.18 0.035 178);
+  --ink-foreground: oklch(0.97 0.012 90);
+  --signal: oklch(0.78 0.15 171);
+  --signal-foreground: oklch(0.16 0.03 178);
+  --sun: oklch(0.83 0.15 88);
+  --sun-foreground: oklch(0.2 0.035 178);
+  --coral: oklch(0.7 0.18 38);
+  --coral-foreground: oklch(0.98 0.01 90);
+  --paper: oklch(0.985 0.012 90);
   --grid: oklch(0.93 0.01 250);
   --safe: oklch(0.68 0.14 160);
   --caution: oklch(0.79 0.15 82);
@@ -143,7 +153,43 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
+  }
+
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-sun-foreground);
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--float-rotate, 0deg)); }
+  50% { transform: translate3d(0, -12px, 0) rotate(var(--float-rotate, 0deg)); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+@utility animate-float {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+@utility animate-drift {
+  animation: drift 4s ease-in-out infinite;
+}
+
+@utility editorial-shadow {
+  box-shadow: 0 24px 70px color-mix(in oklab, var(--color-ink) 16%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -157,7 +203,7 @@
 @utility label-mono {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
