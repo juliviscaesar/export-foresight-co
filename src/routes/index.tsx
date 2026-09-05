@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { Hero } from "@/components/hero";
 import { Section, SectionHeading } from "@/components/section";
 import { NeedSelector } from "@/components/need-selector";
@@ -27,31 +27,43 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const questions = [
+    "¿Cuál es la partida?", "¿Cuánto pagaré de arancel?", "¿Necesita INVIMA?",
+    "¿Necesita ICA?", "¿Cuánto cuesta realmente puesto en Colombia?", "¿FOB o CIF?", "¿Hay algún riesgo?",
+  ];
+  const topics = ["IMPORTAR", "EXPORTAR", "ARANCELES", "INCOTERMS", "DIAN", "ICA", "INVIMA", "VUCE", "TLC", "COSTOS", "REQUISITOS", "PARTIDAS"];
+  const plainComex = [
+    "¿Qué carajos es FOB?", "¿Por qué el precio del proveedor NO es el costo final?",
+    "¿Qué hace realmente la DIAN?", "¿Necesito INVIMA?", "¿Qué es una partida arancelaria?",
+  ];
+
   return (
     <>
       <Hero />
 
-      <Section>
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-end">
-          <h2 className="font-display text-3xl leading-tight font-bold sm:text-5xl">
-            Antes de importar,
-            <br />
-            entiende.
-          </h2>
-          <p className="text-base leading-relaxed text-muted-foreground">
-            La mayoría de las pérdidas en comercio exterior no ocurren en la aduana: ocurren antes,
-            en decisiones tomadas sin información. Nuestro trabajo es que llegues a esa decisión con
-            números, requisitos y riesgos sobre la mesa. Somos una firma de análisis y educación:
-            explicamos, cuantificamos y prevenimos. No ejecutamos actividades reguladas.
-          </p>
+      <Section className="overflow-hidden bg-sun text-sun-foreground">
+        <div className="grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:items-center">
+          <div>
+            <p className="label-mono">Antes de comprarle al proveedor...</p>
+            <h2 className="mt-6 font-display text-6xl leading-[.85] sm:text-8xl">Mejor pregunta <em>primero.</em></h2>
+            <p className="mt-7 max-w-md text-base leading-relaxed opacity-75">Porque una proforma bonita no te cuenta toda la historia. Nosotros te ayudamos a encontrar las preguntas que sí cambian la decisión.</p>
+            <Link to="/diagnostico" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-ink px-6 py-4 text-sm font-bold text-ink-foreground">Analizar operación <ArrowRight className="size-4" /></Link>
+          </div>
+          <div className="relative flex min-h-[430px] flex-wrap content-center justify-center gap-3">
+            {questions.map((question, index) => (
+              <span key={question} className="animate-float rounded-full bg-paper px-5 py-4 text-sm font-semibold text-foreground editorial-shadow" style={{ animationDelay: `${index * .35}s`, transform: `rotate(${index % 2 ? 2 : -2}deg)` }}>{question}</span>
+            ))}
+            <span className="absolute right-0 top-3 font-display text-7xl opacity-15">?</span>
+            <span className="absolute bottom-0 left-0 font-display text-9xl opacity-10">¿</span>
+          </div>
         </div>
       </Section>
 
       <Section id="selector">
         <SectionHeading
-          kicker="Selector de ruta"
-          title="¿Qué necesitas hacer?"
-          description="Elige tu punto de partida y verás la ruta de análisis que seguimos contigo, paso por paso."
+          kicker="Arranquemos por lo tuyo"
+          title="¿Qué necesitas resolver hoy?"
+          description="Cada operación tiene su propio enredo. Escoge el tuyo y te mostramos por dónde empezar a desenredarlo."
         />
         <div className="mt-12">
           <NeedSelector />
@@ -59,21 +71,29 @@ function Index() {
       </Section>
 
       <Section id="calculadora" className="bg-secondary/40">
-        <SectionHeading
-          kicker="Herramienta"
-          title="Calcula tu operación en 60 segundos"
-          description="Estimación orientativa de valor CIF, arancel, IVA y costo unitario puesto en bodega, con seguro calculado al 0,35% del CIF y TRM tomada automáticamente cuando la fuente está disponible."
-        />
-        <div className="mt-12">
-          <Calculator />
+        <Calculator />
+      </Section>
+
+      <Section id="inteligencia" className="overflow-hidden bg-ink text-ink-foreground">
+        <div className="grid gap-14 lg:grid-cols-[.7fr_1.3fr]">
+          <div>
+            <p className="label-mono text-signal">Centro de Inteligencia Comex</p>
+            <h2 className="mt-5 font-display text-5xl leading-[.9] sm:text-7xl">¿Qué quieres saber de <em className="text-sun">Comex?</em></h2>
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink-foreground/62">Entra por el tema que te está dando vueltas. Aquí las normas bajan a tierra y las siglas empiezan a tener sentido.</p>
+          </div>
+          <div className="flex flex-wrap content-center gap-3">
+            {topics.map((topic, index) => (
+              <Link key={topic} to="/centro-inteligencia" className={`rounded-full px-5 py-3 font-mono text-xs transition-transform hover:-translate-y-1 ${index % 4 === 0 ? "bg-sun text-sun-foreground" : index % 5 === 0 ? "bg-coral text-coral-foreground" : "bg-ink-foreground/8 text-ink-foreground"}`}>{topic}</Link>
+            ))}
+          </div>
         </div>
       </Section>
 
       <Section id="entidades">
         <SectionHeading
-          kicker="Entidades de control"
-          title="Quién interviene en tu operación y para qué sirve cada entidad"
-          description="Toca una tarjeta para abrir el panel de detalle: función, cuándo te afecta y por qué conviene revisarlo antes de comprar."
+          kicker="El ecosistema"
+          title="¿Quién se mete en esta vuelta?"
+          description="Toca cada entidad y entiende qué hace, cuándo aparece y qué deberías revisar antes de comprar."
         />
         <div className="mt-12">
           <EntityCards />
@@ -82,61 +102,30 @@ function Index() {
 
       <Section id="mapa" className="bg-secondary/40">
         <SectionHeading
-          kicker="Mapa interactivo"
-          title="Mapa de una importación"
-          description="Siete etapas, con los riesgos, documentos y preguntas clave de cada una. Recorre la secuencia completa antes de emitir una orden de compra."
+          kicker="De aquí hasta allá"
+          title="Sigue el viaje de tu mercancía."
+          description="Cada paso revela costos, documentos y riesgos. La gracia es verlos antes de que la carga empiece a moverse."
         />
         <div className="mt-12">
           <ImportMap />
         </div>
       </Section>
 
-      <Section id="servicios">
-        <SectionHeading
-          kicker="Servicios de asesoría"
-          title="Análisis, criterio y formación"
-          description="Servicios indicativos de consultoría estratégica y educación. El alcance se define caso por caso."
-        />
-        <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              t: "Diagnóstico de viabilidad",
-              d: "Evaluación integral de producto, requisitos, costos y riesgos antes de comprar.",
-            },
-            {
-              t: "Estructura de costos",
-              d: "Modelo de costeo con punto de quiebre por TRM, volumen y precio de venta.",
-            },
-            {
-              t: "Mapa de requisitos",
-              d: "Identificación de entidades, permisos y tiempos reales aplicables a tu producto.",
-            },
-            {
-              t: "Segunda lectura documental",
-              d: "Revisión crítica de cotizaciones, Incoterms, documentos y liquidaciones.",
-            },
-            {
-              t: "Formación para equipos",
-              d: "Programas prácticos de comercio exterior con casos propios de la empresa.",
-            },
-            {
-              t: "Acompañamiento a la decisión",
-              d: "Escenarios, preguntas al proveedor y criterios para seguir o detenerse.",
-            },
-          ].map((s) => (
-            <div key={s.t} className="bg-card p-8">
-              <h3 className="font-display text-lg font-semibold">{s.t}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
-            </div>
-          ))}
+      <Section id="cristiano" className="bg-coral text-coral-foreground">
+        <div className="grid gap-14 lg:grid-cols-[.75fr_1.25fr]">
+          <div>
+            <p className="label-mono">Educación sin carreta</p>
+            <h2 className="mt-5 font-display text-6xl leading-[.85] sm:text-8xl">Comex en <em>cristiano.</em></h2>
+            <p className="mt-6 max-w-sm text-sm leading-relaxed opacity-75">Conceptos complejos, explicados como deberían habértelos contado desde el principio.</p>
+          </div>
+          <div className="divide-y divide-coral-foreground/20">
+            {plainComex.map((title, index) => (
+              <Link key={title} to="/blog" className="group flex items-center justify-between gap-6 py-5">
+                <span className="font-display text-2xl md:text-3xl">{title}</span><span className="font-mono text-xs opacity-55 transition-transform group-hover:translate-x-2">0{index + 1} →</span>
+              </Link>
+            ))}
+          </div>
         </div>
-        <Link
-          to="/servicios"
-          className="mt-8 inline-flex items-center gap-2 text-sm font-medium underline decoration-signal decoration-2 underline-offset-4"
-        >
-          Ver detalle de servicios
-          <ArrowRight className="size-4" />
-        </Link>
       </Section>
 
       <Section id="alcance">
@@ -157,16 +146,16 @@ function Index() {
       <Section id="educacion">
         <SectionHeading
           kicker="Centro educativo"
-          title="Aprende antes de decidir"
-          description="Artículos escritos para que entiendas el fondo del proceso, no solo el trámite."
+          title="Lecturas para no improvisar."
+          description="Historias, guías y explicaciones útiles. Técnicas, sí; acartonadas, no."
         />
-        <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {articles.slice(0, 6).map((a) => (
             <Link
               key={a.slug}
               to="/blog/$slug"
               params={{ slug: a.slug }}
-              className="group bg-card p-7 transition-colors hover:bg-secondary"
+              className="group rounded-2xl bg-card p-7 transition-transform hover:-translate-y-2 editorial-shadow"
             >
               <p className="label-mono text-muted-foreground">{a.category}</p>
               <h3 className="mt-4 font-display text-base leading-snug font-semibold">{a.title}</h3>
@@ -184,20 +173,19 @@ function Index() {
         </Link>
       </Section>
 
-      <Section className="bg-ink text-ink-foreground">
+      <Section className="bg-sun text-sun-foreground">
         <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
           <div>
-            <p className="label-mono text-signal">Siguiente paso</p>
-            <h2 className="mt-4 max-w-2xl font-display text-2xl font-bold sm:text-4xl">
-              Antes de firmar una orden de compra, conversemos.
+            <p className="label-mono">Sin presión, sin venderte fletes</p>
+            <h2 className="mt-4 max-w-2xl font-display text-4xl leading-none sm:text-6xl">
+              ¿Tienes una operación dando vueltas? Hablemos.
             </h2>
           </div>
           <Link
             to="/contacto"
-            className="inline-flex items-center gap-2 rounded-sm bg-signal px-6 py-3.5 text-sm font-semibold text-signal-foreground"
+            className="inline-flex items-center gap-2 rounded-xl bg-ink px-6 py-4 text-sm font-semibold text-ink-foreground"
           >
-            Agenda un diagnóstico
-            <ArrowRight className="size-4" />
+            <MessageCircle className="size-4" /> Escríbenos por WhatsApp
           </Link>
         </div>
       </Section>
