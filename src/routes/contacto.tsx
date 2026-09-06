@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, MessageCircle } from "lucide-react";
 import { Section } from "@/components/section";
 import { PageHero } from "@/components/page-hero";
 import { needs } from "@/lib/comex-data";
@@ -103,6 +103,7 @@ function ContactoPage() {
 
           <div>
             <h2 className="font-display text-2xl font-bold">Qué pasa después</h2>
+            <a href="https://wa.me/573184509704" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-3 rounded-xl bg-signal px-5 py-3 text-sm font-bold text-signal-foreground"><MessageCircle className="size-5" /> WhatsApp: +57 318 450 9704</a>
             <ol className="mt-6 space-y-6">
               {[
                 {
