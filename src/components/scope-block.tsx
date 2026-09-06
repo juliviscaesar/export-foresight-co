@@ -22,8 +22,8 @@ const weAreNot = [
 
 export function ScopeBlock() {
   return (
-    <div className="border border-foreground/15 bg-ink text-ink-foreground">
-      <div className="border-b border-ink-foreground/15 px-8 py-10 md:px-12">
+    <div className="overflow-hidden rounded-3xl bg-ink text-ink-foreground editorial-shadow">
+      <div className="px-8 py-10 md:px-12">
         <p className="label-mono text-signal">Alcance profesional</p>
         <h2 className="mt-5 font-display text-2xl leading-tight font-bold text-balance sm:text-4xl">
           ASESORAMOS. NO EJECUTAMOS ACTIVIDADES REGULADAS.
@@ -34,13 +34,13 @@ export function ScopeBlock() {
         </p>
       </div>
 
-      <div className="grid gap-px bg-ink-foreground/15 md:grid-cols-2">
-        <div className="bg-ink p-8 md:p-12">
-          <p className="label-mono text-safe">Sí hacemos</p>
+      <div className="grid md:grid-cols-2">
+        <div className="bg-signal p-8 text-signal-foreground md:p-12">
+          <p className="label-mono">Sí hacemos</p>
           <ul className="mt-6 space-y-4">
             {weDo.map((item) => (
               <li key={item} className="flex gap-3 text-sm leading-snug">
-                <Check className="mt-0.5 size-4 shrink-0 text-safe" />
+                <Check className="mt-0.5 size-4 shrink-0" />
                 {item}
               </li>
             ))}

@@ -11,13 +11,26 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlcanceRouteImport } from './routes/alcance'
+import { Route as ArancelesRouteImport } from './routes/aranceles'
 import { Route as CalculadoraRouteImport } from './routes/calculadora'
 import { Route as CentroInteligenciaRouteImport } from './routes/centro-inteligencia'
+import { Route as ComoImportarAColombiaRouteImport } from './routes/como-importar-a-colombia'
 import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as CuantoCuestaImportarAColombiaRouteImport } from './routes/cuanto-cuesta-importar-a-colombia'
 import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
+import { Route as DianRouteImport } from './routes/dian'
 import { Route as EntidadesRouteImport } from './routes/entidades'
+import { Route as IcaRouteImport } from './routes/ica'
+import { Route as ImportarDesdeChinaRouteImport } from './routes/importar-desde-china'
+import { Route as ImportarDesdeMexicoRouteImport } from './routes/importar-desde-mexico'
+import { Route as ImportarDesdeUsaRouteImport } from './routes/importar-desde-usa'
+import { Route as IncotermsRouteImport } from './routes/incoterms'
+import { Route as InvimaRouteImport } from './routes/invima'
 import { Route as MapaImportacionRouteImport } from './routes/mapa-importacion'
+import { Route as PartidasArancelariasRouteImport } from './routes/partidas-arancelarias'
+import { Route as RequisitosImportacionRouteImport } from './routes/requisitos-importacion'
 import { Route as ServiciosRouteImport } from './routes/servicios'
+import { Route as VuceRouteImport } from './routes/vuce'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -31,6 +44,11 @@ const AlcanceRoute = AlcanceRouteImport.update({
   path: '/alcance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArancelesRoute = ArancelesRouteImport.update({
+  id: '/aranceles',
+  path: '/aranceles',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CalculadoraRoute = CalculadoraRouteImport.update({
   id: '/calculadora',
   path: '/calculadora',
@@ -41,14 +59,30 @@ const CentroInteligenciaRoute = CentroInteligenciaRouteImport.update({
   path: '/centro-inteligencia',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComoImportarAColombiaRoute = ComoImportarAColombiaRouteImport.update({
+  id: '/como-importar-a-colombia',
+  path: '/como-importar-a-colombia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactoRoute = ContactoRouteImport.update({
   id: '/contacto',
   path: '/contacto',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CuantoCuestaImportarAColombiaRoute =
+  CuantoCuestaImportarAColombiaRouteImport.update({
+    id: '/cuanto-cuesta-importar-a-colombia',
+    path: '/cuanto-cuesta-importar-a-colombia',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const DiagnosticoRoute = DiagnosticoRouteImport.update({
   id: '/diagnostico',
   path: '/diagnostico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DianRoute = DianRouteImport.update({
+  id: '/dian',
+  path: '/dian',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntidadesRoute = EntidadesRouteImport.update({
@@ -56,14 +90,59 @@ const EntidadesRoute = EntidadesRouteImport.update({
   path: '/entidades',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IcaRoute = IcaRouteImport.update({
+  id: '/ica',
+  path: '/ica',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportarDesdeChinaRoute = ImportarDesdeChinaRouteImport.update({
+  id: '/importar-desde-china',
+  path: '/importar-desde-china',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportarDesdeMexicoRoute = ImportarDesdeMexicoRouteImport.update({
+  id: '/importar-desde-mexico',
+  path: '/importar-desde-mexico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportarDesdeUsaRoute = ImportarDesdeUsaRouteImport.update({
+  id: '/importar-desde-usa',
+  path: '/importar-desde-usa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IncotermsRoute = IncotermsRouteImport.update({
+  id: '/incoterms',
+  path: '/incoterms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvimaRoute = InvimaRouteImport.update({
+  id: '/invima',
+  path: '/invima',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MapaImportacionRoute = MapaImportacionRouteImport.update({
   id: '/mapa-importacion',
   path: '/mapa-importacion',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartidasArancelariasRoute = PartidasArancelariasRouteImport.update({
+  id: '/partidas-arancelarias',
+  path: '/partidas-arancelarias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequisitosImportacionRoute = RequisitosImportacionRouteImport.update({
+  id: '/requisitos-importacion',
+  path: '/requisitos-importacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiciosRoute = ServiciosRouteImport.update({
   id: '/servicios',
   path: '/servicios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VuceRoute = VuceRouteImport.update({
+  id: '/vuce',
+  path: '/vuce',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -80,26 +159,52 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alcance': typeof AlcanceRoute
+  '/aranceles': typeof ArancelesRoute
   '/calculadora': typeof CalculadoraRoute
   '/centro-inteligencia': typeof CentroInteligenciaRoute
+  '/como-importar-a-colombia': typeof ComoImportarAColombiaRoute
   '/contacto': typeof ContactoRoute
+  '/cuanto-cuesta-importar-a-colombia': typeof CuantoCuestaImportarAColombiaRoute
   '/diagnostico': typeof DiagnosticoRoute
+  '/dian': typeof DianRoute
   '/entidades': typeof EntidadesRoute
+  '/ica': typeof IcaRoute
+  '/importar-desde-china': typeof ImportarDesdeChinaRoute
+  '/importar-desde-mexico': typeof ImportarDesdeMexicoRoute
+  '/importar-desde-usa': typeof ImportarDesdeUsaRoute
+  '/incoterms': typeof IncotermsRoute
+  '/invima': typeof InvimaRoute
   '/mapa-importacion': typeof MapaImportacionRoute
+  '/partidas-arancelarias': typeof PartidasArancelariasRoute
+  '/requisitos-importacion': typeof RequisitosImportacionRoute
   '/servicios': typeof ServiciosRoute
+  '/vuce': typeof VuceRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alcance': typeof AlcanceRoute
+  '/aranceles': typeof ArancelesRoute
   '/calculadora': typeof CalculadoraRoute
   '/centro-inteligencia': typeof CentroInteligenciaRoute
+  '/como-importar-a-colombia': typeof ComoImportarAColombiaRoute
   '/contacto': typeof ContactoRoute
+  '/cuanto-cuesta-importar-a-colombia': typeof CuantoCuestaImportarAColombiaRoute
   '/diagnostico': typeof DiagnosticoRoute
+  '/dian': typeof DianRoute
   '/entidades': typeof EntidadesRoute
+  '/ica': typeof IcaRoute
+  '/importar-desde-china': typeof ImportarDesdeChinaRoute
+  '/importar-desde-mexico': typeof ImportarDesdeMexicoRoute
+  '/importar-desde-usa': typeof ImportarDesdeUsaRoute
+  '/incoterms': typeof IncotermsRoute
+  '/invima': typeof InvimaRoute
   '/mapa-importacion': typeof MapaImportacionRoute
+  '/partidas-arancelarias': typeof PartidasArancelariasRoute
+  '/requisitos-importacion': typeof RequisitosImportacionRoute
   '/servicios': typeof ServiciosRoute
+  '/vuce': typeof VuceRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -107,13 +212,26 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/alcance': typeof AlcanceRoute
+  '/aranceles': typeof ArancelesRoute
   '/calculadora': typeof CalculadoraRoute
   '/centro-inteligencia': typeof CentroInteligenciaRoute
+  '/como-importar-a-colombia': typeof ComoImportarAColombiaRoute
   '/contacto': typeof ContactoRoute
+  '/cuanto-cuesta-importar-a-colombia': typeof CuantoCuestaImportarAColombiaRoute
   '/diagnostico': typeof DiagnosticoRoute
+  '/dian': typeof DianRoute
   '/entidades': typeof EntidadesRoute
+  '/ica': typeof IcaRoute
+  '/importar-desde-china': typeof ImportarDesdeChinaRoute
+  '/importar-desde-mexico': typeof ImportarDesdeMexicoRoute
+  '/importar-desde-usa': typeof ImportarDesdeUsaRoute
+  '/incoterms': typeof IncotermsRoute
+  '/invima': typeof InvimaRoute
   '/mapa-importacion': typeof MapaImportacionRoute
+  '/partidas-arancelarias': typeof PartidasArancelariasRoute
+  '/requisitos-importacion': typeof RequisitosImportacionRoute
   '/servicios': typeof ServiciosRoute
+  '/vuce': typeof VuceRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -122,39 +240,78 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/alcance'
+    | '/aranceles'
     | '/calculadora'
     | '/centro-inteligencia'
+    | '/como-importar-a-colombia'
     | '/contacto'
+    | '/cuanto-cuesta-importar-a-colombia'
     | '/diagnostico'
+    | '/dian'
     | '/entidades'
+    | '/ica'
+    | '/importar-desde-china'
+    | '/importar-desde-mexico'
+    | '/importar-desde-usa'
+    | '/incoterms'
+    | '/invima'
     | '/mapa-importacion'
+    | '/partidas-arancelarias'
+    | '/requisitos-importacion'
     | '/servicios'
+    | '/vuce'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/alcance'
+    | '/aranceles'
     | '/calculadora'
     | '/centro-inteligencia'
+    | '/como-importar-a-colombia'
     | '/contacto'
+    | '/cuanto-cuesta-importar-a-colombia'
     | '/diagnostico'
+    | '/dian'
     | '/entidades'
+    | '/ica'
+    | '/importar-desde-china'
+    | '/importar-desde-mexico'
+    | '/importar-desde-usa'
+    | '/incoterms'
+    | '/invima'
     | '/mapa-importacion'
+    | '/partidas-arancelarias'
+    | '/requisitos-importacion'
     | '/servicios'
+    | '/vuce'
     | '/blog/$slug'
     | '/blog'
   id:
     | '__root__'
     | '/'
     | '/alcance'
+    | '/aranceles'
     | '/calculadora'
     | '/centro-inteligencia'
+    | '/como-importar-a-colombia'
     | '/contacto'
+    | '/cuanto-cuesta-importar-a-colombia'
     | '/diagnostico'
+    | '/dian'
     | '/entidades'
+    | '/ica'
+    | '/importar-desde-china'
+    | '/importar-desde-mexico'
+    | '/importar-desde-usa'
+    | '/incoterms'
+    | '/invima'
     | '/mapa-importacion'
+    | '/partidas-arancelarias'
+    | '/requisitos-importacion'
     | '/servicios'
+    | '/vuce'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -162,13 +319,26 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlcanceRoute: typeof AlcanceRoute
+  ArancelesRoute: typeof ArancelesRoute
   CalculadoraRoute: typeof CalculadoraRoute
   CentroInteligenciaRoute: typeof CentroInteligenciaRoute
+  ComoImportarAColombiaRoute: typeof ComoImportarAColombiaRoute
   ContactoRoute: typeof ContactoRoute
+  CuantoCuestaImportarAColombiaRoute: typeof CuantoCuestaImportarAColombiaRoute
   DiagnosticoRoute: typeof DiagnosticoRoute
+  DianRoute: typeof DianRoute
   EntidadesRoute: typeof EntidadesRoute
+  IcaRoute: typeof IcaRoute
+  ImportarDesdeChinaRoute: typeof ImportarDesdeChinaRoute
+  ImportarDesdeMexicoRoute: typeof ImportarDesdeMexicoRoute
+  ImportarDesdeUsaRoute: typeof ImportarDesdeUsaRoute
+  IncotermsRoute: typeof IncotermsRoute
+  InvimaRoute: typeof InvimaRoute
   MapaImportacionRoute: typeof MapaImportacionRoute
+  PartidasArancelariasRoute: typeof PartidasArancelariasRoute
+  RequisitosImportacionRoute: typeof RequisitosImportacionRoute
   ServiciosRoute: typeof ServiciosRoute
+  VuceRoute: typeof VuceRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
@@ -189,6 +359,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlcanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aranceles': {
+      id: '/aranceles'
+      path: '/aranceles'
+      fullPath: '/aranceles'
+      preLoaderRoute: typeof ArancelesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/calculadora': {
       id: '/calculadora'
       path: '/calculadora'
@@ -203,11 +380,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CentroInteligenciaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/como-importar-a-colombia': {
+      id: '/como-importar-a-colombia'
+      path: '/como-importar-a-colombia'
+      fullPath: '/como-importar-a-colombia'
+      preLoaderRoute: typeof ComoImportarAColombiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contacto': {
       id: '/contacto'
       path: '/contacto'
       fullPath: '/contacto'
       preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cuanto-cuesta-importar-a-colombia': {
+      id: '/cuanto-cuesta-importar-a-colombia'
+      path: '/cuanto-cuesta-importar-a-colombia'
+      fullPath: '/cuanto-cuesta-importar-a-colombia'
+      preLoaderRoute: typeof CuantoCuestaImportarAColombiaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/diagnostico': {
@@ -217,11 +408,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DiagnosticoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dian': {
+      id: '/dian'
+      path: '/dian'
+      fullPath: '/dian'
+      preLoaderRoute: typeof DianRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/entidades': {
       id: '/entidades'
       path: '/entidades'
       fullPath: '/entidades'
       preLoaderRoute: typeof EntidadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ica': {
+      id: '/ica'
+      path: '/ica'
+      fullPath: '/ica'
+      preLoaderRoute: typeof IcaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/importar-desde-china': {
+      id: '/importar-desde-china'
+      path: '/importar-desde-china'
+      fullPath: '/importar-desde-china'
+      preLoaderRoute: typeof ImportarDesdeChinaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/importar-desde-mexico': {
+      id: '/importar-desde-mexico'
+      path: '/importar-desde-mexico'
+      fullPath: '/importar-desde-mexico'
+      preLoaderRoute: typeof ImportarDesdeMexicoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/importar-desde-usa': {
+      id: '/importar-desde-usa'
+      path: '/importar-desde-usa'
+      fullPath: '/importar-desde-usa'
+      preLoaderRoute: typeof ImportarDesdeUsaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/incoterms': {
+      id: '/incoterms'
+      path: '/incoterms'
+      fullPath: '/incoterms'
+      preLoaderRoute: typeof IncotermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invima': {
+      id: '/invima'
+      path: '/invima'
+      fullPath: '/invima'
+      preLoaderRoute: typeof InvimaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mapa-importacion': {
@@ -231,11 +471,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MapaImportacionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/partidas-arancelarias': {
+      id: '/partidas-arancelarias'
+      path: '/partidas-arancelarias'
+      fullPath: '/partidas-arancelarias'
+      preLoaderRoute: typeof PartidasArancelariasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/requisitos-importacion': {
+      id: '/requisitos-importacion'
+      path: '/requisitos-importacion'
+      fullPath: '/requisitos-importacion'
+      preLoaderRoute: typeof RequisitosImportacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicios': {
       id: '/servicios'
       path: '/servicios'
       fullPath: '/servicios'
       preLoaderRoute: typeof ServiciosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vuce': {
+      id: '/vuce'
+      path: '/vuce'
+      fullPath: '/vuce'
+      preLoaderRoute: typeof VuceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -258,13 +519,26 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlcanceRoute: AlcanceRoute,
+  ArancelesRoute: ArancelesRoute,
   CalculadoraRoute: CalculadoraRoute,
   CentroInteligenciaRoute: CentroInteligenciaRoute,
+  ComoImportarAColombiaRoute: ComoImportarAColombiaRoute,
   ContactoRoute: ContactoRoute,
+  CuantoCuestaImportarAColombiaRoute: CuantoCuestaImportarAColombiaRoute,
   DiagnosticoRoute: DiagnosticoRoute,
+  DianRoute: DianRoute,
   EntidadesRoute: EntidadesRoute,
+  IcaRoute: IcaRoute,
+  ImportarDesdeChinaRoute: ImportarDesdeChinaRoute,
+  ImportarDesdeMexicoRoute: ImportarDesdeMexicoRoute,
+  ImportarDesdeUsaRoute: ImportarDesdeUsaRoute,
+  IncotermsRoute: IncotermsRoute,
+  InvimaRoute: InvimaRoute,
   MapaImportacionRoute: MapaImportacionRoute,
+  PartidasArancelariasRoute: PartidasArancelariasRoute,
+  RequisitosImportacionRoute: RequisitosImportacionRoute,
   ServiciosRoute: ServiciosRoute,
+  VuceRoute: VuceRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
